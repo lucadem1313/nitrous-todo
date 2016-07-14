@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>List Not Found</title>
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mitr|Lato" rel="stylesheet">
+		<link rel="icon" href="http://savemypalette.com/favicon">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="http://savemypalette.com/animatenumber.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#number").animateNumber({number: 404});
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="http://savemypalette.com/api/export?id=site-theme&minified&important">
+    <style>
+      #error{
+        width:100%;
+        margin:0;
+        text-align:center;
+      }
+      #error h1{
+        font:160px Mitr;
+        margin-bottom:100px;
+      }
+      #message{
+        font-size:50px;
+        display:block;
+        color:#03a9f4;
+      }
+      #number{
+        color:#007cff;
+      }
+      footer{
+        font-family:Lato, sans-serif;
+        margin-top:150px;
+      }
+      footer .copyright {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      footer .copyright strong {
+        color: #f23f54;
+      }
+      footer nav{
+        width:100%;
+        text-align: center;
+        margin-bottom:40px;
+      }
+      footer nav a{
+        margin:5px;
+      }
+
+      .button{
+        display:inline-block;
+        padding:16px;
+        border-bottom:6px #2000ff solid;
+        color:#FFF;
+        font:30px Fjalla One, sans-serif;
+        text-decoration:none;
+				position:relative;
+        background:#0093ff;
+      }
+      .button:hover{
+        background:#4fb5ff;
+      }
+			.button:active{
+				top:5px;
+				border-bottom-width:1px;
+			}
+
+      @media screen and (max-width:900px){
+        #error h1{
+          font-size:100px;
+        }
+      }
+      @media screen and (max-width:550px){
+        #error h1{
+          font-size:80px;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <section id="error">
+      <h1><span id="number">404</span><span id="message">List Not Found</span></h1>
+      <a href="/" class="button">Go Home</a>
+      <a href="/list/new" class="button">New List</a>
+    </section>
+  </body>
+</html>

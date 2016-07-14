@@ -1,0 +1,447 @@
+@import "https://fonts.googleapis.com/css?family=Roboto|Montserrat";
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #9cccff;
+}
+
+@-webkit-keyframes ease-up {
+  from {
+    top: 150px;
+    opacity: 0;
+  }
+  to {
+    top: 100px;
+    opacity: 1;
+  }
+}
+
+@keyframes ease-up {
+  from {
+    top: 150px;
+    opacity: 0;
+  }
+  to {
+    top: 100px;
+    opacity: 1;
+  }
+}
+#list {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 400px;
+  margin: 0px auto;
+  margin-bottom: 200px;
+  top: 150px;
+  opacity: 0;
+  background: #FFF;
+  -webkit-box-shadow: 0px 0px 16px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 16px -6px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 16px -6px rgba(0,0,0,0.75);
+
+  border-radius:2px;
+  overflow: hidden;
+
+  -webkit-animation-name: ease-up;
+          animation-name: ease-up;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+#list ul {
+  margin: 0;
+  padding: 0;
+  overflow:auto;
+}
+
+#list li {
+  list-style: none;
+}
+
+#list-menu {
+  position: relative;
+  width: 100%;
+  background: #589aff;
+  border-bottom: 6px #277aff solid;
+  box-sizing: border-box;
+  padding-right: 80px;
+}
+
+#list-menu h1 {
+  margin: 0;
+  font: 30px montserrat, roboto, sans-serif;
+  color: #FFF;
+  display: inline-block;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#list-menu h1 input {
+  display: inline-block;
+  width: 100%;
+  border: none;
+  font: inherit;
+  text-overflow: ellipsis;
+  background: transparent;
+  color: inherit;
+}
+
+#list-menu h1 input:focus {
+  outline: none;
+}
+
+#menu-actions {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+
+#menu-actions div {
+  display: inline-block;
+  width: 40px;
+  height:40px;
+  cursor: pointer;
+}
+
+#menu-actions div svg, #page-actions svg{
+  position:relative;
+  fill:#FFF;
+  transition: all 0.1s;
+}
+#menu-actions div:hover svg, #page-actions .page-action:hover svg{
+    transform:scale(1.1);
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+}
+
+.list-item {
+  width: 100%;
+  padding: 18px;
+  font-family: roboto, sans-serif;
+  position: relative;
+  padding-left: 30px;
+  padding-right: 70px;
+  box-sizing: border-box;
+  color: #000;
+  list-style: none;
+  background: #FFF;
+}
+.list-item.menu-open{
+  z-index: 9999;
+}
+.list-item:nth-of-type(even) {
+  background:#f3f3f3;
+}
+
+.list-item.important {
+  color: #ff8383;
+  color:#ff2626;
+}
+.list-item.moderate {
+  color:#ff7a03;
+}
+
+/*.list-item.important.done {
+  color: #ff8383;
+  background: #fbd8d8;
+  background: #ffd1d1;
+  color: #FFF;
+}*/
+
+.list-item.done .text-input{
+  text-decoration: line-through;
+  color: #b8b8b8;
+}
+.list-item.important.done .text-input{
+  color: #ffc2c2;
+}
+.list-item.moderate.done .text-input{
+  color: #ffc48f;
+}
+
+.item-dots {
+  display: block;
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAIElEQVQIW2NkYGD4zwABjFAazMAqCFMAp+FakGWwCgIAtpQCBvZ2xwcAAAAASUVORK5CYII=) repeat;
+  cursor: grab;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  opacity: 0;
+}
+
+.item-dots:active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}
+
+.list-item:hover .item-dots, .list-item.menu-open .item-dots, .list-item:active .item-dots {
+  opacity: 0.4;
+}
+
+.item-done {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+
+.item-done .checkbox {
+  width: 24px;
+  height: 24px;
+  background-image: url(/static/images/unchecked.png);
+  background-size: 100% 100%;
+  margin: 5px;
+  cursor: pointer;
+  opacity: 0;
+}
+.checkbox img{
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none; /* From IE10 only */
+  user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+.list-item:hover .item-dots:not(:active) ~ .item-done .checkbox, .list-item.menu-open .item-dots:not(:active) ~ .item-done .checkbox {
+  opacity: 1;
+}
+
+.checkbox.checked {
+  background-image: url(/static/images/checked.png);
+  opacity: 1;
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.item-text {
+  width: 100%;
+  margin: 0;
+}
+
+.list-item .text-input {
+  display: inline-block;
+  width: 100%;
+  border: none;
+  font: inherit;
+  text-overflow: ellipsis;
+  background: transparent;
+  color: inherit;
+  text-decoration:inherit;
+}
+
+.list-item .text-input:focus {
+  outline: none;
+}
+
+.item-actions {
+  width: 60px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  opacity: 0;
+  cursor: default;
+}
+
+.list-item:hover .item-dots:not(:active) ~ .item-actions, .list-item.menu-open .item-dots:not(:active) ~ .item-actions {
+  opacity: 1;
+}
+
+.item-actions div {
+  width: 30px;
+  display: inline-block;
+  cursor: pointer;
+  color: inherit;
+  vertical-align: middle;
+}
+
+.item-actions div img {
+  width: 100%;
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none; /* From IE10 only */
+  user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+
+
+
+.importance-select{
+	position:absolute;
+	top:50%;
+  margin-top:30px;
+	right:30px;
+	background:#FFF;
+	z-index:9999;
+	height:0px;
+	overflow:hidden;
+  transition: all 0.2s;
+  -webkit-box-shadow: 0px 3px 30px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 30px -8px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 30px -8px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 5px 16px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 5px 16px -7px rgba(0,0,0,0.75);
+  box-shadow: 0px 5px 16px -7px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  filter:none;
+  -webkit-filter:none;
+  -moz-filter:none;
+}
+.list-item:last-of-type .importance-select, .list-item:nth-last-of-type(2) .importance-select{
+  bottom:50%;
+  top:auto;
+}
+.importance-select.active{
+	height:93px;
+}
+.importance-select div{
+	padding:6px 4px;
+	cursor:pointer;
+	color:#000;
+  background:#FFF;
+  border-left:3px transparent solid;
+}
+.importance-select div:hover{
+	background:#EDEDED;
+  border-left-color:#bddaff;
+}
+
+.normal .select-normal{
+  border-left-color:#007cff !important;
+}
+.moderate .select-moderate{
+  border-left-color:#007cff !important;
+}
+.important .select-important{
+  border-left-color:#007cff !important;
+}
+
+
+.ui-sortable-helper, .ui-sortable-dragging, body.dragging{
+  cursor: grabbing !important;
+  cursor: -webkit-grabbing !important;
+  cursor: -moz-grabbing !important;
+}
+
+.sortable-placeholder {
+  height: 81px;
+  box-sizing: border-box;
+  /* 	border-bottom:1px #EDEDED solid;
+  	border-top:1px #EDEDED solid; */
+  box-shadow: inset 0px 0px 60px -22px rgba(0, 0, 0, 0.59);
+  box-shadow: inset 0px 0px 72px -23px rgba(0, 0, 0, 0.59);
+  box-shadow: inset 0px 0px 7px -1px rgba(0, 0, 0, 0.59);
+  box-shadow: inset 0px 0px 8px -1px rgba(0, 0, 0, 0.28);
+}
+
+
+.tooltipster-box{
+  font:14px Roboto, sans-serif;
+  border-radius: 2px !important;
+}
+.tooltipster-content{
+  padding:5px 8px !important;
+}
+
+
+
+#page-actions{
+  position:fixed;
+  bottom:15px;
+  right:0;
+  padding-right:15px;
+  color:#FFF;
+  fill:#FFF;
+  background:#78b9ff;
+  height: 40px;
+  padding:15px;
+}
+.page-action{
+  display: inline-block;
+  cursor:pointer;
+  vertical-align: middle;
+}
+.page-action a{
+  display:inline-block;
+  text-decoration: none;
+  padding:0;
+  margin:0;
+  height:40px;
+}
+.page-action svg{
+  fill:#FFF;
+}
+
+
+#forms{
+  max-width:340px;
+  display:block;
+  margin:30px auto;
+}
+#forms form input{
+  display:block;
+  margin:10px auto;
+  font:17px Roboto, sans-serif;
+  padding:7px;
+  border:none;
+  position: relative;
+  border-bottom:3px #E2E2E2 solid;
+  transition:all 0.2s;
+}
+#forms form input:focus{
+  outline:none;
+  border-bottom-color:#6ec3ff;
+}
+#login-form{
+  border-bottom:2px #b8b8b8 solid;
+  padding-bottom:60px;
+}
+#forms button{
+  background:transparent;
+  font:17px Roboto, sans-serif;
+  border:2px #a5a4a4 solid;
+  color:#a5a4a4;
+  padding:6px;
+  cursor:pointer;
+  border-radius:3px;
+  margin-top:30px;
+  transition:all 0.1s;
+}
+#forms button:hover{
+  color:#000;
+  border-color:#000;
+}
+#forms button:focus{
+  outline:none;
+  color:#000;
+  border-color:#000;
+}
